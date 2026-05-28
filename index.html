@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QWERTY Typing Practice</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <section id="authOverlay" class="auth-overlay" aria-label="Profile sign in">
+      <form id="authForm" class="auth-card">
+        <p class="eyebrow">Authenticated local practice</p>
+        <h1>Unlock Your Typing Lab</h1>
+        <div class="auth-grid">
+          <label class="field">
+            <span>Profile name</span>
+            <input id="authName" type="text" autocomplete="username" placeholder="Enter your name" required>
+          </label>
+          <label class="field">
+            <span>PIN</span>
+            <input id="authPin" type="password" inputmode="numeric" autocomplete="current-password" minlength="4" placeholder="4+ digit PIN" required>
+          </label>
+        </div>
+        <p id="authMessage" class="auth-message">Create a new local profile or sign in to an existing one.</p>
+        <button id="authButton" class="primary-button" type="submit">Unlock practice</button>
+      </form>
+    </section>
+
+    <main class="app-shell">
+      <section class="practice-panel" aria-label="Typing practice">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Personal typing studio</p>
+            <h1>QWERTY Typing Practice</h1>
+          </div>
+          <div class="profile-box">
+            <span id="profileName">Locked</span>
+            <small>active profile</small>
+            <button id="logoutButton" class="ghost-button compact" type="button">Lock</button>
+          </div>
+        </header>
+
+        <div class="mode-row" role="group" aria-label="Practice mode">
+          <button class="mode-button active" type="button" data-mode="lesson">Lessons</button>
+          <button class="mode-button" type="button" data-mode="direct">Direct practice</button>
+          <button class="mode-button" type="button" data-mode="custom">Custom text</button>
+        </div>
+
+        <div class="controls-grid">
+          <label class="field">
+            <span>Lesson</span>
+            <select id="lessonSelect"></select>
+          </label>
+          <label class="field">
+            <span>Time</span>
+            <select id="durationSelect">
+              <option value="30">30 sec</option>
+              <option value="60" selected>1 min</option>
+              <option value="120">2 min</option>
+              <option value="180">3 min</option>
+              <option value="300">5 min</option>
+              <option value="600">10 min</option>
+            </select>
+          </label>
+          <label class="field custom-field" hidden>
+            <span>Custom text</span>
+            <textarea id="customText" rows="2" placeholder="Paste your own paragraph here"></textarea>
+          </label>
+        </div>
+
+        <div class="stats-strip" aria-live="polite">
+          <div><span id="wpmNow">0</span><small>WPM</small></div>
+          <div><span id="rawWpmNow">0</span><small>raw WPM</small></div>
+          <div><span id="accuracyNow">100%</span><small>Accuracy</small></div>
+          <div><span id="timerNow">60</span><small>Seconds</small></div>
+          <div><span id="errorsNow">0</span><small>Errors</small></div>
+        </div>
+
+        <div class="text-card">
+          <div class="progress-track" aria-label="Session progress">
+            <span id="progressBar"></span>
+          </div>
+          <div id="promptText" class="prompt-text" aria-label="Text to type"></div>
+          <textarea id="typingInput" class="typing-input" spellcheck="false" autocomplete="off" autocapitalize="off" placeholder="Click Start, then type here"></textarea>
+        </div>
+
+        <div class="action-row">
+          <button id="startButton" class="primary-button" type="button">Start</button>
+          <button id="newTextButton" class="secondary-button" type="button">New text</button>
+          <button id="resetButton" class="secondary-button" type="button">Reset</button>
+          <button id="markdownReportButton" class="secondary-button" type="button">Markdown report</button>
+          <button id="wordReportButton" class="secondary-button" type="button">Word report</button>
+          <button id="exportButton" class="secondary-button" type="button">JSON data</button>
+          <button id="clearButton" class="ghost-button" type="button">Clear records</button>
+        </div>
+
+        <section class="keyboard" aria-label="QWERTY keyboard">
+          <div class="key-row" data-row="qwerty"></div>
+          <div class="key-row offset-mid" data-row="home"></div>
+          <div class="key-row offset-low" data-row="bottom"></div>
+          <div class="key-row">
+            <kbd class="key wide" data-key=" ">Space</kbd>
+          </div>
+        </section>
+      </section>
+
+      <aside class="analysis-panel" aria-label="Analysis records">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Every record</p>
+            <h2>Analysis</h2>
+          </div>
+          <div class="best-badge">
+            <span id="bestWpm">0</span>
+            <small>best WPM</small>
+          </div>
+        </div>
+
+        <div class="insight-grid">
+          <div>
+            <span id="averageWpm">0</span>
+            <small>average WPM</small>
+          </div>
+          <div>
+            <span id="averageAccuracy">0%</span>
+            <small>average accuracy</small>
+          </div>
+          <div>
+            <span id="totalSessions">0</span>
+            <small>sessions</small>
+          </div>
+          <div>
+            <span id="totalMinutes">0</span>
+            <small>minutes</small>
+          </div>
+        </div>
+
+        <div class="weakness-box">
+          <h3>Focus keys</h3>
+          <p id="focusKeys">Complete a session to discover slow or error-prone keys.</p>
+        </div>
+
+        <ol id="recordList" class="record-list"></ol>
+      </aside>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
