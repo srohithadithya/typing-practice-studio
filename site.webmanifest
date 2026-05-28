@@ -1,0 +1,17 @@
+{
+  "name": "Typing Practice Studio",
+  "short_name": "Typing Studio",
+  "description": "Authenticated QWERTY typing practice with dynamic tests and analytics.",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#16795b",
+  "background_color": "#f7f5ef",
+  "display": "standalone",
+  "start_url": "./index.html"
+}

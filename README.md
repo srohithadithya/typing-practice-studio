@@ -5,6 +5,7 @@ Typing Practice Studio is a local-first, authenticated QWERTY typing trainer des
 ## Highlights
 
 - Profile-based local authentication using name + PIN.
+- Custom favicon and app-brand metadata for browser tabs and install surfaces.
 - Multiple training modes:
   - Lesson-based drills.
   - Dynamic direct practice with changing text each session.
@@ -37,7 +38,9 @@ Typing Practice Studio is a local-first, authenticated QWERTY typing trainer des
 ```text
 .
 |-- app.js
+|-- favicon.svg
 |-- index.html
+|-- site.webmanifest
 |-- styles.css
 `-- README.md
 ```
@@ -95,4 +98,3 @@ All data is saved in browser storage:
 ## License
 
 This project is currently unlicensed. Add a license file before production or distribution.
-
